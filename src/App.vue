@@ -12,9 +12,6 @@ export default {
   components: {
     AppHeader,
   },
-  mounted() {
-    console.log("CLIENT" + process.env.CLIENT_ID);
-  },
 };
 </script>
 
