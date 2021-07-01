@@ -10,14 +10,18 @@
           <i class="search link icon"></i>
         </div>
       </div>
-      <a class="ui item"> Log In </a>
+      <a href="#" class="ui item" @click="login"> Log In </a>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "AppHeader",
+  methods: {
+    ...mapActions(["login"]),
+  },
 };
 </script>
 
