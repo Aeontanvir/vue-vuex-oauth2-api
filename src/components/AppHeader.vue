@@ -1,29 +1,35 @@
 <template>
   <div class="ui secondary pointing menu">
     <a class="active item"> Home </a>
-    <a class="item"> Messages </a>
-    <a class="item"> Friends </a>
     <div class="right menu">
-      <div class="item">
-        <div class="ui icon input">
-          <input type="text" placeholder="Search..." />
-          <i class="search link icon"></i>
+      <div v-if="isLoggedIn" class="horizontal">
+        <div class="item">
+          <div class="ui icon input">
+            <input type="text" placeholder="Search..." />
+            <i class="search link icon"></i>
+          </div>
         </div>
+        <a href="#" class="item"> Galleries </a>
+        <a href="#" class="item"> Upload </a>
+        <a href="#" class="item" @click="logout"> Logout </a>
       </div>
-      <a href="#" class="ui item" @click="login"> Log In </a>
+      <a v-else href="#" class="ui item" @click="login"> Log In </a>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "AppHeader",
-  methods: {
-    ...mapActions(["login"]),
-  },
+  computed: mapGetters(["isLoggedIn"]),
+  methods: mapActions(["login", "logout"]),
 };
 </script>
 
-<style>
+<style scoped>
+.horizontal {
+  display: flex;
+  flex-direction: row;
+}
 </style>
